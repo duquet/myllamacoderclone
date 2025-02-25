@@ -12,8 +12,8 @@ This guide details how to build an open-source AI-powered code generator using *
 
 ## Table of Contents
 
-1. [1. Setup Your Next.js Project (8:44)](#1-setup-your-nextjs-project-844)
-2. [2. Creating the Basic Home Page (10:14)](#2-creating-the-basic-home-page-1014)
+1. [Setup Your Next.js Project (8:44)](#1-setup-your-nextjs-project-844)
+2. [Creating the Basic Home Page (10:14)](#2-creating-the-basic-home-page-1014)
 3. [3. Adding the Input Field (12:03)](#3-adding-the-input-field-1203)
 4. [4. Saving the Prompt in State (13:42)](#4-saving-the-prompt-in-state-1342)
 5. [5. Creating the API Backend Route for Code Generation (14:49)](#5-creating-the-api-backend-route-for-code-generation-1449)
@@ -50,6 +50,7 @@ npx create-next-app llama-coder-clone
 ```bash
 cd llama-coder-clone
 npm install together-ai @codesandbox/sandpack-react
+npm run dev
 ```
 
 _These commands set up your project and add Together AI and Sandpack to your dependency list._

@@ -1,12 +1,28 @@
-Andrew, here’s an updated version of the guide with even more detailed bullet-point summaries drawn directly from the transcript, along with explicit references to where sample code was found for each step where applicable. Take your time to review this comprehensive version:
-
----
-
-
 # Building a LlamaCoder Clone: Step-by-Step Guide
 
-This guide details how to build an open-source AI-powered code generator using **Next.js**, **Together AI**, and **Sandpack**. It’s based on Hassan’s live coding session (transcript attached) from his tutorial  
-["Learn How To Build and Scale AI Apps: A Deep Dive Into LlamaCoder, an Open-Source Code Generator"](https://www.youtube.com/watch?v=hARmHYaZ_MQ). This document provides very detailed, transcript-based summaries for each step and includes explicit references to the sample code sources used during the session.
+This guide details how to build an open-source AI-powered code generator using **Next.js**, **Together AI**, and **Sandpack**. It’s based on Hassan’s live coding session (see transcript for section start times) from his youtube video tutorial  
+["Learn How To Build and Scale AI Apps: A Deep Dive Into LlamaCoder, an Open-Source Code Generator"](https://www.youtube.com/watch?v=hARmHYaZ_MQ). 
+
+This document provides very detailed, transcript-based summary for each step and includes explicit references to the sample code sources used during the session.
+
+TODO:
+Use code specific to each step and create a repo that has each step in it (currently referring to final code which is confusing)
+Update the GPT o3-mini-high shared session to include changes
+
+Here is my shared ChatGPT session for trying to create the guide from the youtube video
+https://chatgpt.com/share/67be4423-e5b0-800d-843b-79f41a7ee896
+
+TODO:
+Review README “guide” and clean it up using MD
+I tried to ask ChatGPT o3-mini-high to remove '''markdown and closing '''' (so I could use directly in Github) but it then didn't display the markdown correctly
+Think about how the guide could have been created from scratch using an App
+prompt: Use Exact Code
+add a section number to section titles in the body but don't have redundant section numbers in the table of contents (have the sections in a numbered list without the starting number from the section title)
+remove timestamp in first bullet point
+put explanation of “This section” and “This Snippet” above the bullet points. Instead of saying "This Section sets up" and "This Snippet", rephrase to say "Set up" or other action word phrase. For example, replace "This ensures the input updates the state dynamically." with "Update the prompt state dynamically".
+Remove the subtitle “Detailed Transcript Summary:”
+maybe remove the line numbers in the code cells
+Create a questions section and add this to it: Question #1: Why Use stream.toReadableStream();? and remove it as a separate section
 
 ---
 
@@ -14,28 +30,28 @@ This guide details how to build an open-source AI-powered code generator using *
 
 1. [Setup Your Next.js Project (8:44)](#1-setup-your-nextjs-project-844)
 2. [Creating the Basic Home Page (10:14)](#2-creating-the-basic-home-page-1014)
-3. [3. Adding the Input Field (12:03)](#3-adding-the-input-field-1203)
-4. [4. Saving the Prompt in State (13:42)](#4-saving-the-prompt-in-state-1342)
-5. [5. Creating the API Backend Route for Code Generation (14:49)](#5-creating-the-api-backend-route-for-code-generation-1449)
-6. [6. Wrapping the Input Field into a Form (15:57)](#6-wrapping-the-input-field-into-a-form-1597)
-7. [7. Calling the `generateCode` Function (16:37)](#7-calling-the-generatecode-function-1637)
-8. [8. Testing API Calls in Terminal (17:17)](#8-testing-api-calls-in-terminal-1717)
-9. [9. Replacing API Route with Together AI API (18:00)](#9-replacing-api-route-with-together-ai-api-1800)
-10. [10. Updating Frontend to Use `runner.on` for Streaming (21:10)](#10-updating-frontend-to-use-runneron-for-streaming-2110)
-11. [11. Creating `generatedCode` State and Displaying Output (22:07)](#11-creating-generatedcode-state-and-displaying-output-2207)
-12. [12. Using Sandpack to Render the Code (24:05)](#12-using-sandpack-to-render-the-code-2405)
-13. [13. Changing the LLM Prompt for Better Code Output (26:03)](#13-changing-the-llm-prompt-for-better-code-output-2603)
-14. [14. Fixing the Tailwind Bug in Sandpack (27:25)](#14-fixing-the-tailwind-bug-in-sandpack-2725)
-15. [15. Why Use `stream.toReadableStream();`?](#15-why-use-streamtoreadablestream)
-16. [16. Common Mistakes](#16-common-mistakes)
-17. [17. Complete Code Files with Inline Comments](#17-complete-code-files-with-inline-comments)
-18. [18. Debugging & Feedback](#18-debugging--feedback)
+3. [Adding the Input Field (12:03)](#3-adding-the-input-field-1203)
+4. [Saving the Prompt in State (13:42)](#4-saving-the-prompt-in-state-1342)
+5. [Creating the API Backend Route for Code Generation (14:49)](#5-creating-the-api-backend-route-for-code-generation-1449)
+6. [Wrapping the Input Field into a Form (15:57)](#6-wrapping-the-input-field-into-a-form-1597)
+7. [Calling the `generateCode` Function (16:37)](#7-calling-the-generatecode-function-1637)
+8. [Testing API Calls in Terminal (17:17)](#8-testing-api-calls-in-terminal-1717)
+9. [Replacing API Route with Together AI API (18:00)](#9-replacing-api-route-with-together-ai-api-1800)
+10. [Updating Frontend to Use `runner.on` for Streaming (21:10)](#10-updating-frontend-to-use-runneron-for-streaming-2110)
+11. [Creating `generatedCode` State and Displaying Output (22:07)](#11-creating-generatedcode-state-and-displaying-output-2207)
+12. [Using Sandpack to Render the Code (24:05)](#12-using-sandpack-to-render-the-code-2405)
+13. [Changing the LLM Prompt for Better Code Output (26:03)](#13-changing-the-llm-prompt-for-better-code-output-2603)
+14. [Fixing the Tailwind Bug in Sandpack (27:25)](#14-fixing-the-tailwind-bug-in-sandpack-2725)
+15. [Why Use `stream.toReadableStream();`?](#15-why-use-streamtoreadablestream)
+16. [Common Mistakes](#16-common-mistakes)
+17. [Complete Code Files with Inline Comments](#17-complete-code-files-with-inline-comments)
+18. [Debugging & Feedback](#18-debugging--feedback)
 
 ---
 
 ## 1. Setup Your Next.js Project (8:44)
 
-**Detailed Transcript Summary:**
+_Set up your project and add Together AI and Sandpack to your dependency list. We will also make sure these are added later._
 
 - **Terminal Commands:** Hassan begins by running `npx create-next-app llama-coder-clone` to generate a new Next.js project.
 - **Environment Note:** He stresses using the latest Node.js version and confirms that the project is created with all necessary configurations.
@@ -53,13 +69,11 @@ npm install together-ai @codesandbox/sandpack-react
 npm run dev
 ```
 
-_These commands set up your project and add Together AI and Sandpack to your dependency list._
-
 ---
 
 ## 2. Creating the Basic Home Page (10:14)
 
-**Detailed Transcript Summary:**
+_Set up client-side rendering and the basic page layout._
 
 - **Client-Side Rendering:** At 10:14, Hassan emphasizes enabling client-side rendering with `"use client";`.
 - **UI Verification:** He instructs viewers to navigate to [https://localhost:3000](https://localhost:3000) to verify that the home page displays the title "My Llama Coder Clone".
@@ -79,13 +93,9 @@ export default function Home() {
 }
 ```
 
-_This section sets up client-side rendering and the basic page layout._
-
 ---
 
 ## 3. Adding the Input Field (12:03)
-
-**Detailed Transcript Summary:**
 
 - **Input Addition:** At 12:03, Hassan adds an input field for user prompts.
 - **Styling Details:** He demonstrates using Tailwind CSS classes for border, padding, and margin.
@@ -110,7 +120,7 @@ _This snippet shows the input field with appropriate styling and placeholder tex
 
 ## 4. Saving the Prompt in State (13:42)
 
-**Detailed Transcript Summary:**
+_Update the prompt state dynamically._
 
 - **State Management:** At 13:42, Hassan explains the necessity of storing the prompt in React state using `useState`.
 - **Dynamic Input:** He demonstrates how each keystroke updates the state and how to log the prompt to verify its value.
@@ -125,13 +135,11 @@ import { useState } from "react"; // Importing useState for state management
 const [prompt, setPrompt] = useState("");
 ```
 
-_This ensures the input updates the state dynamically._
-
 ---
 
 ## 5. Creating the API Backend Route for Code Generation (14:49)
 
-**Detailed Transcript Summary:**
+_This API route handles JSON requests and returns a streaming response from Together AI._
 
 - **Backend Route Creation:** At 14:49, Hassan sets up an API route (`route.ts`) to process code generation requests.
 - **JSON Parsing:** He explains how the backend extracts the prompt from the JSON body.
@@ -158,13 +166,11 @@ export async function POST(req: Request) {
 }
 ```
 
-_This API route handles JSON requests and returns a streaming response from Together AI._
-
 ---
 
 ## 6. Wrapping the Input Field into a Form (15:57)
 
-**Detailed Transcript Summary:**
+_Ensure the form submission triggers the code generation process without reloading the page._
 
 - **Form Usage:** At 15:57, Hassan emphasizes the need to wrap the input field within a `<form>` element to handle submission with the Enter key.
 - **Event Handling:** He explains that using an `onSubmit` event prevents the default page reload and calls the `generateCode` function.
@@ -181,13 +187,12 @@ _This API route handles JSON requests and returns a streaming response from Toge
 </form>
 ```
 
-_This ensures the form submission triggers the code generation process without reloading the page._
-
 ---
 
 ## 7. Calling the `generateCode` Function (16:37)
 
-**Detailed Transcript Summary:**
+_Create a function that handles form submission and processes the streaming response.  
+**Note:** Sample code is available in the Together AI documentation under Streaming Responses._
 
 - **Function Implementation:** At 16:37, Hassan introduces the `generateCode` function.
 - **Preventing Default:** He emphasizes using `e.preventDefault()` to stop the page from reloading.
@@ -212,14 +217,11 @@ async function generateCode(e: React.FormEvent<HTMLFormElement>) {
 }
 ```
 
-_This function handles form submission and processes the streaming response.  
-**Note:** Sample code is available in the Together AI documentation under Streaming Responses._
-
 ---
 
 ## 8. Testing API Calls in Terminal (17:17)
 
-**Detailed Transcript Summary:**
+_Simulate a POST request using curl to verify the API backend._
 
 - **Testing with Curl:** At 17:17, Hassan demonstrates testing the API using a `curl` command.
 - **Response Verification:** He explains that the prompt is logged and the expected JSON response confirms the API route works.
@@ -231,13 +233,13 @@ curl -X POST http://localhost:3000/api/generateCode \
   -H "Content-Type: application/json"
 ```
 
-_This command simulates a POST request to verify the API backend._
-
 ---
 
 ## 9. Replacing API Route with Together AI API (18:00)
 
-**Detailed Transcript Summary:**
+_Integrate the Together AI API for real-time code generation.  
+**Note:** Sample code for the runner setup is available on the Together AI website under Streaming Responses._
+
 
 - **Direct AI Integration:** At 18:00, Hassan replaces custom logic with a direct Together AI API call.
 - **Model and Streaming:** He specifies the model `"meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo"` and enables streaming.
@@ -261,14 +263,12 @@ runner.on("content", (delta) => {
 });
 ```
 
-_This section integrates the Together AI API for real-time code generation.  
-**Note:** Sample code for the runner setup is available on the Together AI website under Streaming Responses._
-
 ---
 
 ## 10. Updating Frontend to Use `runner.on` for Streaming (21:10)
 
-**Detailed Transcript Summary:**
+_Clarify how streaming responses are handled on the frontend.  
+**Note:** Sample code for these blocks was found in the NextJS quickstart guide at [https://docs.together.ai/docs/nextjs-chat-quickstart](https://docs.together.ai/docs/nextjs-chat-quickstart)._
 
 - **Real-Time Streaming Update:** At 21:10, Hassan details how to update the frontend to process streaming responses.
 - **Splitting the Code:** He splits the logic into two parts: one for creating the runner and one for handling the `content` event.
@@ -286,14 +286,13 @@ runner.on("content", (delta) => {
 });
 ```
 
-_This clarifies how streaming responses are handled on the frontend.  
-**Note:** Sample code for these blocks was found in the NextJS quickstart guide at [https://docs.together.ai/docs/nextjs-chat-quickstart](https://docs.together.ai/docs/nextjs-chat-quickstart)._
 
 ---
 
 ## 11. Creating `generatedCode` State and Displaying Output (22:07)
 
-**Detailed Transcript Summary:**
+
+_Ensures that the generated code is dynamically displayed._
 
 - **State for Output:** At 22:07, Hassan adds a new state variable, `generatedCode`, to capture the streamed response.
 - **Dynamic UI Update:** He explains how the `<pre>` tag preserves formatting as the code updates in real time.
@@ -308,13 +307,13 @@ const [generatedCode, setGeneratedCode] = useState("");
 <pre>{generatedCode}</pre>
 ```
 
-_This ensures that the generated code is dynamically displayed._
-
 ---
 
 ## 12. Using Sandpack to Render the Code (24:05)
 
-**Detailed Transcript Summary:**
+
+_This sets up a live code preview using Sandpack.  
+**Note:** Sample code and configuration details were taken from the Sandpack documentation._
 
 - **Interactive Code Preview:** At 24:05, Hassan demonstrates integrating Sandpack to provide a live preview of the generated code.
 - **External Resources Configuration:** He explains how to include Tailwind CSS via external resources for proper styling.
@@ -361,14 +360,14 @@ let sharedOptions = {
 }
 ```
 
-_This sets up a live code preview using Sandpack.  
-**Note:** Sample code and configuration details were taken from the Sandpack documentation._
 
 ---
 
 ## 13. Changing the LLM Prompt for Better Code Output (26:03)
 
-**Detailed Transcript Summary:**
+
+_Improve the quality of the AI-generated code._
+
 
 - **Prompt Engineering:** At 26:03, Hassan discusses refining the system prompt to guide the AI to produce cleaner, more modular React code.
 - **Concatenation:** He shows how the system prompt is concatenated with the user’s input before sending the request.
@@ -391,13 +390,11 @@ const response = await together.chat.completions.create({
 });
 ```
 
-_This step helps improve the quality of the AI-generated code._
-
 ---
 
 ## 14. Fixing the Tailwind Bug in Sandpack (27:25)
 
-**Detailed Transcript Summary:**
+_This ensures proper styling in the live preview._
 
 - **Bug Resolution:** At 27:25, Hassan shows how to fix issues where Tailwind CSS might not load correctly in Sandpack.
 - **HTML Update:** He includes a script tag in the HTML file to import Tailwind CSS.
@@ -428,13 +425,14 @@ let sharedOptions = {
 };
 ```
 
-_This ensures proper styling in the live preview._
 
 ---
 
-## 15. Why Use `stream.toReadableStream();`?
+## 15. Question #1: Why Use `stream.toReadableStream();`?
 
-**Detailed Transcript Summary:**
+
+_This conversion is essential for real-time data handling by the browser._
+
 
 - **Technical Explanation:** At this point in the transcript, Hassan explains why converting the stream using `stream.toReadableStream()` is necessary.
 - **Browser Compatibility:** He notes that this conversion ensures the browser can correctly handle and display the streamed data.
@@ -456,13 +454,12 @@ return new Response(response.body, {
 });
 ```
 
-_This conversion is essential for real-time data handling by the browser._
-
 ---
 
 ## 16. Common Mistakes
 
-**Detailed Transcript Summary:**
+
+_These tips help avoid common mistakes and improve code quality._
 
 - **New Programmers:** Hassan advises new programmers to always use `e.preventDefault()` and handle asynchronous API calls properly.
 - **Intermediate Programmers:** He warns about mixing business logic with UI rendering and stresses careful state management.
@@ -488,7 +485,6 @@ _This conversion is essential for real-time data handling by the browser._
 // - Profile streaming performance when handling large responses.
 ```
 
-_These tips help avoid common mistakes and improve code quality._
 
 ---
 
@@ -596,7 +592,7 @@ export async function POST(req: Request) {
 
 ## 18. Debugging & Feedback
 
-**Detailed Transcript Summary:**
+
 
 - **Version Control Reminder:** Hassan advises using Git to save versions of your work and prevent loss of sections.
 - **Mapping Comments:** He stresses that each code snippet’s inline comments help trace its function.
@@ -626,10 +622,3 @@ _End of Guide._
 ```
 
 ---
-
-You can download this updated Markdown document with the enhanced transcript details and sample code source references using the link below:
-
-[Download LlamaCoder_Clone_Guide.md](sandbox://LlamaCoder_Clone_Guide.md)
-
-Let me know if you need any further modifications or additional details, Andrew!
-```

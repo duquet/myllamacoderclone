@@ -2,7 +2,7 @@ Andrew, here’s an updated version of the guide with even more detailed bullet-
 
 ---
 
-````markdown
+
 # Building a LlamaCoder Clone: Step-by-Step Guide
 
 This guide details how to build an open-source AI-powered code generator using **Next.js**, **Together AI**, and **Sandpack**. It’s based on Hassan’s live coding session (transcript attached) from his tutorial  
@@ -45,7 +45,7 @@ This guide details how to build an open-source AI-powered code generator using *
 ```bash
 npx create-next-app llama-coder-clone
 ```
-````
+
 
 ```bash
 cd llama-coder-clone

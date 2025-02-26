@@ -46,7 +46,8 @@ Add an Intro section that includes that Hassan have a demo (shared screen at 4:0
 ---
 
 ## Table of Contents
-
+[-1] [Idea for Auto-Guide ChatGPT Generator] (see above)
+0. [Introduction]
 1. [Setup Your Next.js Project (8:44)](#1-setup-your-nextjs-project-844)
 2. [Creating the Basic Home Page (10:14)](#2-creating-the-basic-home-page-1014)
 3. [Adding the Input Field (12:03)](#3-adding-the-input-field-1203)
@@ -70,17 +71,19 @@ Add an Intro section that includes that Hassan have a demo (shared screen at 4:0
 
 ## 0. Intro (Demo and Explaination)
 
-Hassan begins the livestreamed Dec 3, 2024 youtube with a demo (shared screen at 4:04) which included "Create a Calculator App" using Lllama 3.1 405B LLM and demonstrates it works and how you can publish and modify it (caveat: good for small or limited applications only). 
+Hassan begins the livestreamed Dec 3, 2024 youtube with a demo (shared his screen starting at 4:04) which included "Create a Calculator App" using Lllama 3.1 405B LLM and demonstrates it works and how you can publish and modify it (caveat: llamacoder is good for small or limited applications only). 
 
 Hassan also demonstrated generating code for a landing page. 
 
-- **Free and open source.
-- **Popular app.
-- **Showed Pausible (436k visitors) and Helicone (over a million requests (apps and edits)).
-- **Target audience for the youtube video is anyone with or without NextJS experience.
-- **I'm using start times on the updated December youtube video as it i the one in the Together Ai youtube channel.
+- Free and open source.
+- Popular app.
+- Showed Pausible (436k visitors) and Helicone (over a million requests (apps and edits)).
+- Target audience for the youtube video is anyone with or without NextJS experience.
+- I'm using start times on the updated December youtube video as it i the one in the Together Ai youtube channel.
+- Neither youtube video appears to have a github for the basic version covered so I created my own at github.com/duquet/myllamacoderclone
+- caveat: llamacoder is good for small or limited applications only
 
-_NOTE: There are 2 very similar youtube videos and I may have messed up the start times by looking at wrong one. Arg!!! Neither one appears to have a github for the basic version covered so I created my own at github.com/duquet/myllamacoderclone_ 
+_NOTE: There are 2 very similar youtube videos and I may have messed up the start times by looking at wrong one. Arg!!! Here are the youtube descriptions: _ 
 
 How We Built LlamaCoder (400k Users) – A Full-Stack Next.js AI App
 https://www.youtube.com/watch?v=N1mXXgw1GHM (This youtube version removes the frontend dead space so is shorter)

@@ -68,11 +68,19 @@ Add an Intro section that includes that Hassan have a demo (shared screen at 4:0
 
 ---
 
-## 0. Intro (2 very similar Youtube videos)
+## 0. Intro (Demo and Explaination)
 
-Hassan begins the livestreamed Dec 3, 2024 youtube with a demo (shared screen at 4:04) which included "Create a Calculator App" using Lllama 3.1 405B LLM and demonstrates it works and how you can publish and modify it (caveat: good for small or limited applications only). Hassan also demonstrated generating code for a landing page. Free and open source. Popular app. Showed Pausible (436k visitors) and Helicone (over a million requests (apps and edits)). Target audience is anyone with or without NextJS experience.
+Hassan begins the livestreamed Dec 3, 2024 youtube with a demo (shared screen at 4:04) which included "Create a Calculator App" using Lllama 3.1 405B LLM and demonstrates it works and how you can publish and modify it (caveat: good for small or limited applications only). 
 
-_NOTE: There are 2 very similar youtube videos and I may have messed up the start times by looking at wrong one. Arg!!! Neither one appears to have a github for the basic version covered so I created my own at github.com/duquet/myllamacoderclone_
+Hassan also demonstrated generating code for a landing page. 
+
+- **Free and open source.
+- **Popular app.
+- **Showed Pausible (436k visitors) and Helicone (over a million requests (apps and edits)).
+- **Target audience for the youtube video is anyone with or without NextJS experience.
+- **I'm using start times on the updated December youtube video as it i the one in the Together Ai youtube channel.
+
+_NOTE: There are 2 very similar youtube videos and I may have messed up the start times by looking at wrong one. Arg!!! Neither one appears to have a github for the basic version covered so I created my own at github.com/duquet/myllamacoderclone_ 
 
 How We Built LlamaCoder (400k Users) – A Full-Stack Next.js AI App
 https://www.youtube.com/watch?v=N1mXXgw1GHM (This youtube version removes the frontend dead space so is shorter)
@@ -99,7 +107,7 @@ What you'll learn in this video:
 2. A full code walkthrough of the whole repo, including the frontend & backend.
 3. Tips for creating your own full-stack AI applications.
 
-Hassan's other demos are discussed afterward at 
+_NOTE: Hassan's other demos are discussed afterwards._
    
 ## 1. Setup Your Next.js Project (8:44)
 

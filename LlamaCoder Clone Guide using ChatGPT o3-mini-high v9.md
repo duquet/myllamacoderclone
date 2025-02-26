@@ -3,6 +3,8 @@
 This guide details how to build an open-source AI-powered code generator using **Next.js**, **Together AI**, and **Sandpack**. It’s based on Hassan’s live coding session (see transcript for section start times) from his youtube video tutorial  
 ["Learn How To Build and Scale AI Apps: A Deep Dive Into LlamaCoder, an Open-Source Code Generator"](https://www.youtube.com/watch?v=hARmHYaZ_MQ). 
 
+Hassan El Mghari from the Together AI Dev Rel team as he goes over how he built LlamaCoder 
+
 This document provides very detailed, transcript-based summary for each step and includes explicit references to the sample code sources used during the session.
 
 TODO:
@@ -11,8 +13,14 @@ Update the GPT o3-mini-high shared session to include changes
 
 Here is my shared ChatGPT session for trying to create the guide from the youtube video
 https://chatgpt.com/share/67be4423-e5b0-800d-843b-79f41a7ee896
+or here:
+How We Built LlamaCoder (400k Users) – A Full-Stack Next.js AI App
+
+https://www.youtube.com/watch?v=N1mXXgw1GHM
 
 TODO:
+Make sure to use the correct timestamped transcript when editting for start times!!!
+
 Review README “guide” and clean it up using MD
 
 I tried to ask ChatGPT o3-mini-high to remove '''markdown and closing '''' (so I could use directly in Github) but it then didn't display the markdown correctly
@@ -60,6 +68,39 @@ Add an Intro section that includes that Hassan have a demo (shared screen at 4:0
 
 ---
 
+## 0. Intro (2 very similar Youtube videos)
+
+Hassan begins the livestreamed Dec 3, 2024 youtube with a demo (shared screen at 4:04) which included "Create a Calculator App" using Lllama 3.1 405B LLM and demonstrates it works and how you can publish and modify it (caveat: good for small or limited applications only). Hassan also demonstrated generating code for a landing page. Free and open source. Popular app. Showed Pausible (436k visitors) and Helicone (over a million requests (apps and edits)). Target audience is anyone with or without NextJS experience.
+
+_NOTE: There are 2 very similar youtube videos and I may have messed up the start times by looking at wrong one. Arg!!! Neither one appears to have a github for the basic version covered so I created my own at github.com/duquet/myllamacoderclone_
+
+How We Built LlamaCoder (400k Users) – A Full-Stack Next.js AI App
+https://www.youtube.com/watch?v=N1mXXgw1GHM (This youtube version removes the frontend dead space so is shorter)
+
+925 views  Streamed live on Nov 6, 2024
+​Join Hassan El Mghari from the Together AI Dev Rel team as he goes over how he built LlamaCoder – an open-source code generation tool where you can build small apps with a single prompt.
+
+It currently has over 400k users and 3k stars on GitHub.
+
+He’ll go over exactly how he built it in a single weekend, how he scaled it to 400k users, and advice for how to build your own full-stack AI apps with Next.js
+
+or
+Learn How To Build and Scale AI Apps: A Deep Dive Into LlamaCoder, an Open-Source Code Generator
+https://www.youtube.com/watch?v=hARmHYaZ_MQ
+
+508 views  Dec 3, 2024  SAN FRANCISCO
+In this video, Hassan, the creator of LlamaCoder, will walk us through how he developed this powerful, open-source code generation tool in just one weekend. He'll also cover lessons learned from building and scaling AI applications. 
+
+LlamaCoder is an open-source web app that allows people to generate a full React app from a single prompt, and has over 400k users and 3k stars on GitHub!  It's built with Llama 3.1 405B through Together AI, along with Next.js as the app framework, TypeScript as the language, and Tailwind for styling.
+
+What you'll learn in this video:
+ 
+1. The technical journey of building LlamaCoder with Together + Next.js.
+2. A full code walkthrough of the whole repo, including the frontend & backend.
+3. Tips for creating your own full-stack AI applications.
+
+Hassan's other demos are discussed afterward at 
+   
 ## 1. Setup Your Next.js Project (8:44)
 
 _Set up your project and add Together AI and Sandpack to your dependency list. We will also make sure these are added later._
@@ -532,10 +573,30 @@ let sharedOptions = {
 };
 ```
 
+---
+
+## 15. Improvements to the Basic LlamaCoder and Github Code Review (39:30)
+
+_Discusses what is in the current LlamaCoder Github including more features like model selection, share your app, shadcn/ui toggle button, ._ 
+Llamma 3.1 405B
+llamma 3.2 90B
+Qwen 2.5 72B
+Gemma 2.27B (Underrated!)
+
+ Updates:
+Some parsing in api/generateCode/route.ts using zod (40:52)
+System Prompt (40:55)
+All user messages (40:56)
+Examples (41:01) such as landing page
+Shadcn if toggle on
+
+Summary: It's amazing what you can do in the Ai Space!
+
+Other Apps: 
 
 ---
 
-## 15. Question #1: Why Use `stream.toReadableStream();`?
+## 16. Question #1: Why Use `stream.toReadableStream();`?
 
 
 _This conversion is essential for real-time data handling by the browser._
@@ -563,7 +624,7 @@ return new Response(response.body, {
 
 ---
 
-## 16. Common Mistakes
+## 17. Common Mistakes
 
 
 _These tips help avoid common mistakes and improve code quality._

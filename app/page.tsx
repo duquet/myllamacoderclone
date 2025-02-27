@@ -12,14 +12,17 @@ export default function Home() {
     const res = await fetch("/api/generateCode", {
       method: "POST",
       body: JSON.stringify({ prompt }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    let runner = ChatCompletionStream.fromReadableStream(res.body!);
+    const runner = ChatCompletionStream.fromReadableStream(res.body!);
     runner.on("content", (delta) => {
       setGeneratedCode((text) => text + delta);
     }); // setAnswer is a function that sets the answer in the UI
   }
 
-  let sharedOptions = {
+  const sharedOptions = {
     externalResources: [
       "https://unpkg.com/@tailwindcss/ui/dist/tailwind-ui.min.css",
     ],
